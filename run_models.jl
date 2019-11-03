@@ -61,7 +61,7 @@ d_probs = mean(d_mat_dppm[:,seq_to_keep] .== 0, dims = 2)
 """R
 
 # setup for the plots
-setwd("~/fosr_clust/biometrics_draft/")
+setwd("~/Research/fosr_clust/")
 library(stats)
 library(Hmisc)
 library(corrplot)
