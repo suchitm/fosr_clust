@@ -6,18 +6,17 @@ using Random
 using RCall
 using Plots
 
-include("get_data.jl")
-include("fosr_dp.jl")
-include("fosr_dppm.jl")
-include("shared_samplers.jl")
-include("dp_samplers.jl")
-include("dppm_samplers.jl")
-include("helpers.jl")
+include("./samplers/fosr_dp.jl")
+include("./samplers/fosr_dppm.jl")
+include("./samplers/shared_samplers.jl")
+include("./samplers/dp_samplers.jl")
+include("./samplers/dppm_samplers.jl")
+include("./samplers/helpers.jl")
 
 Random.seed!(1234);
 
 R"""
-load("~/Research/fosr_clust/asfr.RData")
+load("~/Research/fosr_clust/data/asfr.RData")
 X = asfr_list$X
 Y = asfr_list$Y
 var_names = colnames(X)
