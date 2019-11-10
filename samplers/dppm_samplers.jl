@@ -20,9 +20,7 @@ function update_d_ind_dppm!(d_ind, P_c, X, ehat, lambdas_B, tau, eta, eta_0,
         post_probs = get_clust_post(prior_probs, log_lik)
         d_ind[j] = sample(0:(this_K+1), post_probs)
 
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         # rearranging again; need to account for if all is null
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         is_null = (d_ind .== 0) * 1;
         temp_d_ind = d_ind[(is_null .== 0)];
         
@@ -62,9 +60,7 @@ function get_log_lik_dppm!(log_lik, d_ind, j, X, ehat, tau, lambdas_B,
             continue
         end
     
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         # the case where ther are non-null predictors
-        #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
         # getting the vecc-ed predictor matrix
         n_clust = temp_d_ind |> countmap |> length;
         D = make_D(temp_d_ind, n_clust);
@@ -101,7 +97,6 @@ end
 # functions to get the prior probabilities of 
 # cluster membership
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
 # combines the null and the clust prior
 function get_clust_prior_dppm(d_ind, is_null, eta, eta_0, P_c, j)
     null_prior = get_null_clust_prior(is_null, j, eta_0, P_c);
@@ -146,7 +141,7 @@ end
 function get_prior_and_lambdas_dppm!(j, d_ind, eta_0, eta, P_c, a_lambda, 
                                      b_lambda, lambdas_B)
 
-    # determinng the null clusters and the clusters which are non-zero
+    # determining the null clusters and the clusters which are non-zero
     is_null = (d_ind .== 0) * 1;
     temp_d_ind = d_ind[(is_null .== 0) .& (1:end .!= j)];
 

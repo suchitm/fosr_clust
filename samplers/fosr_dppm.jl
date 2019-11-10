@@ -52,7 +52,7 @@ function fosr_dppm(Y, W, X, mtheta, R, n_iter, verbose = true)
                                        eta, eta_0, a_lambda, b_lambda, 
                                        mtheta, R, NT, M, cc_ind)
         
-        # some info from the cluster update
+        # info from the cluster update
         temp_d_ind = d_ind[d_ind .!= 0];
         K_nz = temp_d_ind |> unique |> length;
         K = K_nz + 1;
