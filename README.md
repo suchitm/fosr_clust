@@ -1,2 +1,2 @@
 # fosr_clust
-Code for function-on-scalar regression (FOSR) with variable selection and clustering
+The file run_models.jl contains the code to read in the dataset, run the DP and DPPM models, and create the plots presented in the paper. 
