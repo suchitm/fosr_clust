@@ -9,3 +9,5 @@ The repository is organized as follows:
   - The script to run both models and create the plots is in <tt>run_models.jl</tt>
   
 The main functions to execute the models are `fosr_dp` and `fosr_dppm`. FOSR DP only uses the Dirichlet process prior while DPPM uses the Dirichlet process plus a point mass. Each function as the same inputs, the important ones being: a matrix `Y` which is an N by M matrix of responses, `W`, a matrix of predictors that will not be clustered, `X`, the matrix of predictors which will be clustered, and `R`, a matrix containing the smoothing penalty for the coefficient estimates. The number of iterations `n_iter` should be set relatively high, and half of the iterations will be used for burn in. 
+
+Note that Julia version >1.0 needs to be utilized to run the code. 
